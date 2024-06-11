@@ -7,7 +7,7 @@ defmodule KindlingUI.Components do
       import KindlingUI.Components.CodeBlock
       import KindlingUI.Components.Drawer
       import KindlingUI.Components.Header
-      import KindlingUI.Components.Heroicon
+      import KindlingUI.Components.Icon
       import KindlingUI.Components.Menu
       import KindlingUI.Components.Navbar
     end

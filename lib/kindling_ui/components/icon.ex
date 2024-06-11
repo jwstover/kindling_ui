@@ -1,4 +1,4 @@
-defmodule KindlingUI.Components.Heroicon do
+defmodule KindlingUI.Components.Icon do
   @moduledoc false
 
   use KindlingUI, :html
@@ -24,7 +24,7 @@ defmodule KindlingUI.Components.Heroicon do
   attr :name, :string, required: true
   attr :class, :any, default: nil
 
-  def heroicon(%{name: "hero-" <> _} = assigns) do
+  def icon(%{name: "hero-" <> _} = assigns) do
     ~H"""
     <span class={[@name, @class]} />
     """

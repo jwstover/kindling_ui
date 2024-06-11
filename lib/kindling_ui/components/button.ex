@@ -3,7 +3,7 @@ defmodule KindlingUI.Components.Button do
 
   use KindlingUI, :html
 
-  import KindlingUI.Components.Heroicon
+  import KindlingUI.Components.Icon
 
   attr :class, :string, default: nil
   attr :icon, :string, default: nil
@@ -17,9 +17,9 @@ defmodule KindlingUI.Components.Button do
     ~H"""
     <button type={@type} class="btn-container" {@rest}>
       <div class={["btn", @class]}>
-        <.heroicon :if={@icon} name={@icon} class="btn-icon" />
+        <.icon :if={@icon} name={@icon} class="btn-icon" />
         <%= render_slot(@inner_block) %>
-        <.heroicon :if={@icon_end} name={@icon_end} class="btn-icon" />
+        <.icon :if={@icon_end} name={@icon_end} class="btn-icon" />
       </div>
     </button>
     """

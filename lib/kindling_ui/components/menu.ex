@@ -3,7 +3,7 @@ defmodule KindlingUI.Components.Menu do
 
   use KindlingUI, :html
 
-  import KindlingUI.Components.Heroicon
+  import KindlingUI.Components.Icon
 
   attr :class, :string, default: ""
 
@@ -28,7 +28,7 @@ defmodule KindlingUI.Components.Menu do
     ~H"""
     <li>
       <a phx-click={@on_click}>
-        <.heroicon :if={@icon} name={@icon} class={["h-5 w-5", @icon_class]} />
+        <.icon :if={@icon} name={@icon} class={["h-5 w-5", @icon_class]} />
         <span :if={@label}><%= @label %></span>
         <%= render_slot(@inner_block) %>
       </a>
@@ -48,7 +48,7 @@ defmodule KindlingUI.Components.Menu do
     <li>
       <details open={@open}>
         <summary>
-          <.heroicon :if={@icon} name={@icon} class="h-5 w-5" />
+          <.icon :if={@icon} name={@icon} class="h-5 w-5" />
           <span :if={@label}><%= @label %></span>
           <%= render_slot(@label_block) %>
         </summary>
