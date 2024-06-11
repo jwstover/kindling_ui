@@ -1,4 +1,4 @@
-defmodule KindlingUi.MixProject do
+defmodule KindlingUI.MixProject do
   use Mix.Project
 
   def project do

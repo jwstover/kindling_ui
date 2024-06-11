@@ -1,8 +1,8 @@
-defmodule KindlingUiTest do
+defmodule KindlingUITest do
   use ExUnit.Case
-  doctest KindlingUi
+  doctest KindlingUI
 
   test "greets the world" do
-    assert KindlingUi.hello() == :world
+    assert KindlingUI.hello() == :world
   end
 end

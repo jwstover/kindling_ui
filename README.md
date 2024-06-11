@@ -1,4 +1,4 @@
-# KindlingUi
+# KindlingUI
 
 **TODO: Add description**
 

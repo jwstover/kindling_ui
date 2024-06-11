@@ -3,16 +3,24 @@ defmodule KindlingUI.Components.Button do
 
   use KindlingUI, :html
 
-  attr :type, :string, default: nil
+  import KindlingUI.Components.Heroicon
+
   attr :class, :string, default: nil
+  attr :icon, :string, default: nil
+  attr :icon_end, :string, default: nil
+  attr :type, :string, default: nil
   attr :rest, :global, include: ~w(disabled form name value)
 
   slot :inner_block, required: true
 
   def button(assigns) do
     ~H"""
-    <button type={@type} class={["btn", @class]} {@rest}>
-      <%= render_slot(@inner_block) %>
+    <button type={@type} class="btn-container" {@rest}>
+      <div class={["btn", @class]}>
+        <.heroicon :if={@icon} name={@icon} class="btn-icon" />
+        <%= render_slot(@inner_block) %>
+        <.heroicon :if={@icon_end} name={@icon_end} class="btn-icon" />
+      </div>
     </button>
     """
   end

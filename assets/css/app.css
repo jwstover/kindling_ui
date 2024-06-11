@@ -1,0 +1,82 @@
+.btn:not(.btn-ghost):not(.btn-fancy) {
+  border-color: color-mix(in oklch, oklch(var(--btn-color)), white 30%);
+}
+
+.btn-container {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+
+.btn-fancy {
+  position: relative;
+}
+
+.btn-container:active {
+  transform: scale(0.97);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.btn-fancy::before,
+.btn-fancy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  border-radius: inherit;
+  background: conic-gradient(from var(--gradient-angle), oklch(var(--p)), oklch(var(--s)), oklch(var(--p)));
+  animation: rotate-grad 3s linear infinite;
+  transition: filter 100ms linear;
+  --webkit-transition: -webkit-filter 100ms linear;
+}
+
+.btn-fancy:active:hover,
+.btn-fancy:active:focus {
+  transform: unset;
+}
+
+.btn-fancy:hover:after,
+.btn-fancy:hover:before {
+  animation-duration: 1s;
+}
+
+.btn-fancy::before {
+  inset: -0.2rem;
+  border-radius: calc(var(--rounded-btn) + 0.2rem);
+}
+
+.btn-fancy::after {
+  filter: blur(0.5rem);
+  -webkit-filter: blur(0.5rem);
+}
+
+@keyframes rotate-grad {
+  from {
+    --gradient-angle: 0deg;
+  }
+
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.btn .btn-icon {
+  @apply w-6 h-6;
+}
+
+.btn-lg .btn-icon {
+  @apply w-7 h-7;
+}
+
+.btn-sm .btn-icon {
+  @apply w-5 h-5;
+}
+
+.btn-xs .btn-icon {
+  @apply w-4 h-4;
+}
