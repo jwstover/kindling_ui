@@ -15,7 +15,6 @@ defmodule KindlingUI.Components.CodeBlock do
     ~H"""
     <div class={["mockup-code", @class]}>
       <%= for {line, index} <- Enum.with_index(@code) do %>
-        <% IO.inspect(line) %>
         <pre
           data-prefix={(@line_numbers && index + 1) || @prefix}
           class={[Map.get(line, :highlight) && "bg-warning text-warning-content"]}

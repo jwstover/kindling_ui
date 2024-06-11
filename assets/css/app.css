@@ -1,7 +1,3 @@
-.btn:not(.btn-ghost):not(.btn-fancy) {
-  border-color: color-mix(in oklch, oklch(var(--btn-color)), white 30%);
-}
-
 .btn-container {
   position: relative;
   display: inline-block;
