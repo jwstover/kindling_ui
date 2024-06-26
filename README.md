@@ -1,5 +1,7 @@
 # 🔥 KindlingUI
 
+[Documentation](https://kindling-ui.fly.dev) | [Components](https://kindling-ui.fly.dev/button)
+
 KindlingUI is a collection of pre-built components backed by the fantastic
 <a class="link link-primary" href="https://daisyui.com/">DaisyUI</a>
 for use in your Phoenix LiveView projects.
@@ -56,33 +58,33 @@ module.exports = {
 
 #### Add KindlingUI to your project
 
-<p>1. KindlingUI isn't available on Hex yet, so you'll have to install it from github.</p>
+1. KindlingUI isn't available on Hex yet, so you'll have to install it from github.</p>
 
-<.code_block line_numbers>
-<:code># mix.exs</:code>
-<:code></:code>
-<:code>def deps do</:code>
-<:code>[</:code>
-<:code highlight>{:kindling_ui, github: "jwstover/kindling_ui"}</:code>
-<:code>]</:code>
-<:code>end</:code>
-</.code_block>
+```elixir
+# mix.exs
 
-<p>2. Inclide KindlingUI's css in your app.css</p>
+def deps do
+  [
+    {:kindling_ui, github: "jwstover/kindling_ui"}
+  ]
+end
+```
 
-<.code_block line_numbers>
-<:code># assets/css/app.css</:code>
-<:code></:code>
-<:code>@import "tailwindcss/base";</:code>
-<:code>@import "tailwindcss/components";</:code>
-<:code>@import "tailwindcss/utilities";</:code>
-<:code></:code>
-<:code highlight>@import "../../deps/kindling_ui/assets/css/app.css";</:code>
-</.code_block>
+2. Include KindlingUI's css in your app.css</p>
 
-<.h2>Next Steps</.h2>
+```css
+# assets/css/app.css
 
-<p>
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+# Add this line
+@import "../../deps/kindling_ui/assets/css/app.css";
+```
+
+## Next Steps
+
 That's it! You should have KindlingUI installed and ready for use in your Phoenix app.
-Click below to go to the usage guide.
-</p>
+
+You can check out the rest of the documentation on the [KindlingUI website](https://kindling-ui.fly.dev).
