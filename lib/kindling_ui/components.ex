@@ -3,12 +3,14 @@ defmodule KindlingUI.Components do
 
   defmacro __using__(_opts) do
     quote do
+      import KindlingUI.Commands
       import KindlingUI.Components.Button
       import KindlingUI.Components.CodeBlock
       import KindlingUI.Components.Drawer
       import KindlingUI.Components.Header
       import KindlingUI.Components.Icon
       import KindlingUI.Components.Menu
+      import KindlingUI.Components.Modal
       import KindlingUI.Components.Navbar
     end
   end
