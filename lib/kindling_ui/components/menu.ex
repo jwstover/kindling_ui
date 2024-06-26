@@ -6,12 +6,13 @@ defmodule KindlingUI.Components.Menu do
   import KindlingUI.Components.Icon
 
   attr :class, :string, default: ""
+  attr :horizontal, :boolean, default: false
 
   slot :inner_block
 
   def menu(assigns) do
     ~H"""
-    <ul class={["menu", @class]}>
+    <ul class={["menu", @class, @horizontal && "menu-horizontal"]}>
       <%= render_slot(@inner_block) %>
     </ul>
     """
