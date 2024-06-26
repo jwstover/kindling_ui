@@ -73,13 +73,12 @@ end
 2. Include KindlingUI's css in your app.css</p>
 
 ```css
-# assets/css/app.css
-
+/* assets/css/app.css */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-# Add this line
+/* Add this line */
 @import "../../deps/kindling_ui/assets/css/app.css";
 ```
 
