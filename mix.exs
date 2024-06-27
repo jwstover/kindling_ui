@@ -23,7 +23,8 @@ defmodule KindlingUI.MixProject do
     [
       {:phoenix, "~> 1.7.12"},
       {:phoenix_html, "~> 4.0"},
-      {:phoenix_live_view, "~> 0.20.2"}
+      {:phoenix_live_view, "~> 0.20.2"},
+      {:gettext, "~> 0.24.0"}
     ]
   end
 end

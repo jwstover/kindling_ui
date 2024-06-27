@@ -27,6 +27,8 @@ defmodule KindlingUI do
 
   defp html_helpers do
     quote do
+      import KindlingUI.Gettext
+
       # HTML escaping functionality
       import Phoenix.HTML
 
