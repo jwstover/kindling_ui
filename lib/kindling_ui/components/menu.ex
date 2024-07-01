@@ -38,6 +38,7 @@ defmodule KindlingUI.Components.Menu do
   end
 
   attr :icon, :string, default: nil
+  attr :icon_class, :any, default: "", doc: "Classes to be applied to the icon element"
   attr :label, :string, default: nil
   attr :open, :boolean, default: false
 
@@ -49,7 +50,7 @@ defmodule KindlingUI.Components.Menu do
     <li>
       <details open={@open}>
         <summary>
-          <.icon :if={@icon} name={@icon} class="h-5 w-5" />
+          <.icon :if={@icon} name={@icon} class={["h-5 w-5", @icon_class]} />
           <span :if={@label}><%= @label %></span>
           <%= render_slot(@label_block) %>
         </summary>
