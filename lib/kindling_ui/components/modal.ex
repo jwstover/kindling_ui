@@ -48,8 +48,11 @@ defmodule KindlingUI.Components.Modal do
         class="modal-box relative top-20"
         tabindex="0"
       >
-        <div class="absolute top-2 right-2">    
-          <.button class="btn-ghost btn-xs btn-square" phx-click={JS.exec("data-cancel", to: "##{@id}")}>
+        <div class="absolute top-2 right-2">
+          <.button
+            class="btn-ghost btn-xs btn-square"
+            phx-click={JS.exec("data-cancel", to: "##{@id}")}
+          >
             <.icon name="hero-x-mark" />
           </.button>
         </div>
@@ -70,5 +73,4 @@ defmodule KindlingUI.Components.Modal do
     |> JS.remove_class("modal-open", to: "##{id}")
     |> JS.pop_focus()
   end
-
 end

@@ -33,6 +33,7 @@ defmodule KindlingUI.Components.Input do
       <.input name="my-input" errors={["oh no!"]} />
   """
   attr :id, :any, default: nil
+  attr :class, :any, default: "", doc: "CSS classes to be applied to the input element"
   attr :name, :any
   attr :label, :string, default: nil
   attr :value, :any
@@ -66,15 +67,16 @@ defmodule KindlingUI.Components.Input do
     |> input()
   end
 
-  def input(%{type: "checkbox"} = assigns) do
+  def input(%{type: "toggle"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
         Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
       end)
 
     ~H"""
-    <div phx-feedback-for={@name}>
-      <label class="flex items-center gap-4 text-sm leading-6 text-zinc-600">
+    <div class="form-control max-w-max" phx-feedback-for={@name}>
+      <label class="label cursor-pointer">
+        <span class="label-text"><%= @label %></span> 
         <input type="hidden" name={@name} value="false" />
         <input
           type="checkbox"
@@ -82,10 +84,35 @@ defmodule KindlingUI.Components.Input do
           name={@name}
           value="true"
           checked={@checked}
-          class="rounded border-zinc-300 text-zinc-900 focus:ring-0"
+          class={["toggle ml-2", @class]}
           {@rest}
         />
-        <%= @label %>
+      </label>
+      <.error :for={msg <- @errors}><%= msg %></.error>
+    </div>
+    """
+  end
+
+  def input(%{type: "checkbox"} = assigns) do
+    assigns =
+      assign_new(assigns, :checked, fn ->
+        Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
+      end)
+
+    ~H"""
+    <div class="form-control max-w-max" phx-feedback-for={@name}>
+      <label class="label cursor-pointer">
+        <span class="label-text"><%= @label %></span> 
+        <input type="hidden" name={@name} value="false" />
+        <input
+          type="checkbox"
+          id={@id}
+          name={@name}
+          value="true"
+          checked={@checked}
+          class={["checkbox ml-2", @class]}
+          {@rest}
+        />
       </label>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
@@ -94,12 +121,12 @@ defmodule KindlingUI.Components.Input do
 
   def input(%{type: "select"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
-      <.label for={@id}><%= @label %></.label>
+    <div class="form-control" phx-feedback-for={@name}>
+      <.label :if={@label} for={@id}><%= @label %></.label>
       <select
         id={@id}
         name={@name}
-        class="mt-2 block w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-zinc-400 focus:ring-0 sm:text-sm"
+        class={["select", @class]}
         multiple={@multiple}
         {@rest}
       >
@@ -113,16 +140,15 @@ defmodule KindlingUI.Components.Input do
 
   def input(%{type: "textarea"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
-      <.label for={@id}><%= @label %></.label>
+    <div class="form-control" phx-feedback-for={@name}>
+      <.label :if={@label} for={@id}><%= @label %></.label>
       <textarea
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          "min-h-[6rem] phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          "textarea",
+          @class,
+          @errors != [] && "input-error"
         ]}
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
@@ -134,18 +160,17 @@ defmodule KindlingUI.Components.Input do
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
-      <.label for={@id}><%= @label %></.label>
+    <div class={["form-control"]} phx-feedback-for={@name}>
+      <.label :if={@label} for={@id}> <%= @label %> </.label>
       <input
         type={@type}
         name={@name}
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          "input",
+          @class,
+          @errors != [] && "input-error"
         ]}
         {@rest}
       />

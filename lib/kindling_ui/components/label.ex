@@ -4,15 +4,17 @@ defmodule KindlingUI.Components.Label do
   use KindlingUI, :html
 
   @doc """
-  Renders a label.
+  Renders a label
   """
+
   attr :for, :string, default: nil
+
   slot :inner_block, required: true
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="block text-sm font-semibold leading-6 text-zinc-800">
-      <%= render_slot(@inner_block) %>
+    <label for={@for} class="label">
+      <span class="label-text"><%= render_slot(@inner_block) %></span>
     </label>
     """
   end
