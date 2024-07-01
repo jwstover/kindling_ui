@@ -13,6 +13,7 @@ defmodule KindlingUI.Components do
       import KindlingUI.Components.Menu
       import KindlingUI.Components.Modal
       import KindlingUI.Components.Navbar
+      import KindlingUI.Components.Table
     end
   end
 end

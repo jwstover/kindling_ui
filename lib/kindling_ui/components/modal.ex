@@ -45,7 +45,7 @@ defmodule KindlingUI.Components.Modal do
         phx-key="escape"
         phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
         phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
-        class="modal-box relative"
+        class="modal-box relative top-20"
         tabindex="0"
       >
         <div class="absolute top-2 right-2">    
