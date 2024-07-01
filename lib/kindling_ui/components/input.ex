@@ -71,6 +71,7 @@ defmodule KindlingUI.Components.Input do
     assigns =
       assign_new(assigns, :checked, fn ->
         Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
+        |> IO.inspect()
       end)
 
     ~H"""
