@@ -76,7 +76,7 @@ defmodule KindlingUI.Components.Input do
     ~H"""
     <div class="form-control max-w-max" phx-feedback-for={@name}>
       <label class="label cursor-pointer">
-        <span class="label-text"><%= @label %></span> 
+        <span class="label-text"><%= @label %></span>
         <input type="hidden" name={@name} value="false" />
         <input
           type="checkbox"
@@ -102,7 +102,7 @@ defmodule KindlingUI.Components.Input do
     ~H"""
     <div class="form-control max-w-max" phx-feedback-for={@name}>
       <label class="label cursor-pointer">
-        <span class="label-text"><%= @label %></span> 
+        <span class="label-text"><%= @label %></span>
         <input type="hidden" name={@name} value="false" />
         <input
           type="checkbox"
@@ -123,13 +123,7 @@ defmodule KindlingUI.Components.Input do
     ~H"""
     <div class="form-control" phx-feedback-for={@name}>
       <.label :if={@label} for={@id}><%= @label %></.label>
-      <select
-        id={@id}
-        name={@name}
-        class={["select", @class]}
-        multiple={@multiple}
-        {@rest}
-      >
+      <select id={@id} name={@name} class={["select", @class]} multiple={@multiple} {@rest}>
         <option :if={@prompt} value=""><%= @prompt %></option>
         <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
       </select>
@@ -161,7 +155,7 @@ defmodule KindlingUI.Components.Input do
   def input(assigns) do
     ~H"""
     <div class={["form-control"]} phx-feedback-for={@name}>
-      <.label :if={@label} for={@id}> <%= @label %> </.label>
+      <.label :if={@label} for={@id}><%= @label %></.label>
       <input
         type={@type}
         name={@name}

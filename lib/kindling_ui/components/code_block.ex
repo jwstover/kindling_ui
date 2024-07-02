@@ -18,7 +18,10 @@ defmodule KindlingUI.Components.CodeBlock do
       <%= for {line, index} <- Enum.with_index(@code) do %>
         <pre
           data-prefix={(@line_numbers && index + 1) || @prefix}
-          class={[Map.get(line, :highlight) && "bg-warning text-warning-content", Map.get(line, :class)]}
+          class={[
+            Map.get(line, :highlight) && "bg-warning text-warning-content",
+            Map.get(line, :class)
+          ]}
         ><code><%= render_slot(line) %></code></pre>
       <% end %>
     </div>
