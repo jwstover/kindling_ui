@@ -9,7 +9,9 @@ defmodule KindlingUI.Components.Drawer do
   attr :class, :string, default: nil
 
   slot :inner_block
-  slot :side
+  slot :side do
+    attr :class, :string
+  end
 
   def drawer(assigns) do
     assigns =
@@ -22,10 +24,10 @@ defmodule KindlingUI.Components.Drawer do
       <div class="drawer-content">
         <%= render_slot(@inner_block) %>
       </div>
-      <div class="drawer-side absolute h-full">
+      <aside :for={side <- @side} class={["drawer-side absolute h-full", Map.get(side, :class)]}>
         <label for={@id} aria-label="close sidebar" class="drawer-overlay"></label>
         <%= render_slot(@side) %>
-      </div>
+      </aside>
     </div>
     """
   end
