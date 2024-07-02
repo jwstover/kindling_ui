@@ -24,4 +24,25 @@ defmodule KindlingUI.Components.Button do
     </button>
     """
   end
+
+  @doc """
+  Renders a back navigation link.
+
+  ## Examples
+
+      <.back navigate={~p"/posts"}>Back to posts</.back>
+  """
+  attr :navigate, :any, required: true
+  attr :class, :any, default: nil
+
+  slot :inner_block, required: true
+
+  def back(assigns) do
+    ~H"""
+    <.link navigate={@navigate} class={["btn", @class]}>
+      <.icon name="hero-arrow-left-solid" class="h-3 w-3" />
+      <%= render_slot(@inner_block) %>
+    </.link>
+    """
+  end
 end
