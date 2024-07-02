@@ -34,13 +34,13 @@ defmodule KindlingUI.Components.Flash do
       {@rest}
     >
       <div class={[
-        "alert w-80 sm:w-96",
+        "alert flex flex-row flex-nowrap items-center w-80 sm:w-96",
         @kind == :info && "border-success",
         @kind == :error && "border-error"
       ]}>
         <.icon :if={@kind == :info} name="hero-information-circle-mini text-success" class="h-6 w-6" />
         <.icon :if={@kind == :error} name="hero-exclamation-circle-mini text-error" class="h-6 w-6" />
-        <div>
+        <div class="flex-1 flex flex-col items-start">
           <h3 :if={@title} class="font-bold"><%= @title %></h3>
           <div class="text-xs"><%= msg %></div>
         </div>

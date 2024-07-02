@@ -14,11 +14,12 @@ defmodule KindlingUI.Components.CodeBlock do
 
   def code_block(assigns) do
     ~H"""
-    <div class={["mockup-code", @class]}>
+    <div class={["relative mockup-code", @class]}>
       <%= for {line, index} <- Enum.with_index(@code) do %>
         <pre
           data-prefix={(@line_numbers && index + 1) || @prefix}
           class={[
+            "min-w-min",
             Map.get(line, :highlight) && "bg-warning text-warning-content",
             Map.get(line, :class)
           ]}
