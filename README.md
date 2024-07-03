@@ -43,7 +43,7 @@ heavy lifting, so you'll need that as well.
 npm i -D daisyui@latest
 ```
 
-2. Add the DaisyUI plugin to your Tailwind config.
+2. Add the DaisyUI plugin to your Tailwind config, and remove the `@tailwindcss/forms` plugin.
 
 ```js
 // assets/tailwind.config.js
@@ -51,6 +51,7 @@ module.exports = {
   //...
   plugins: [
     require('daisyui'),
+    require('@tailwindcss/forms') // remove this line
     //...
   ],
 }
@@ -81,6 +82,8 @@ end
 /* Add this line */
 @import "../../deps/kindling_ui/assets/css/app.css";
 ```
+
+3. Replace `import CoreComponents` with `use KindlingUI.Components` in the `html_helpers/0` function in your web module.
 
 ## Next Steps
 
