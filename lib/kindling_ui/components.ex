@@ -4,6 +4,7 @@ defmodule KindlingUI.Components do
   defmacro __using__(_opts) do
     quote do
       import KindlingUI.Commands
+      import KindlingUI.Components.Avatar
       import KindlingUI.Components.Button
       import KindlingUI.Components.CodeBlock
       import KindlingUI.Components.Drawer

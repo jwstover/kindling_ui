@@ -3,50 +3,34 @@ defmodule KindlingUI.Components.Navbar do
 
   use KindlingUI, :html
 
-  attr :class, :string, default: ""
+  attr :class, :any, default: ""
 
   slot :inner_block
+
+  slot :nav_start do
+    attr :class, :any
+  end
+
+  slot :nav_center do
+    attr :class, :any
+  end
+
+  slot :nav_end do
+    attr :class, :any
+  end
 
   def navbar(assigns) do
     ~H"""
-    <navbar class={["navbar", @class]}>
-      <%= render_slot(@inner_block) %>
-    </navbar>
-    """
-  end
-
-  attr :class, :string, default: ""
-
-  slot :inner_block
-
-  def navbar_start(assigns) do
-    ~H"""
-    <div class={["navbar-start", @class]}>
-      <%= render_slot(@inner_block) %>
-    </div>
-    """
-  end
-
-  attr :class, :string, default: ""
-
-  slot :inner_block
-
-  def navbar_center(assigns) do
-    ~H"""
-    <div class={["navbar-center", @class]}>
-      <%= render_slot(@inner_block) %>
-    </div>
-    """
-  end
-
-  attr :class, :string, default: ""
-
-  slot :inner_block
-
-  def navbar_end(assigns) do
-    ~H"""
-    <div class={["navbar-end", @class]}>
-      <%= render_slot(@inner_block) %>
+    <div class={["navbar justify-between", @class]}>
+      <div :for={nav_start <- @nav_start} class={["inline-flex justify-start items-center", Map.get(nav_start, :class)]}>
+        <%= render_slot(nav_start) %>
+      </div>
+      <div :for={nav_center <- @nav_center} class={["inline-flex grow justify-center items-center", Map.get(nav_center, :class)]}>
+        <%= render_slot(nav_center) %>
+      </div>
+      <div :for={nav_end <- @nav_end} class={["inline-flex justify-end items-center", Map.get(nav_end, :class)]}>
+        <%= render_slot(nav_end) %>
+      </div>
     </div>
     """
   end
