@@ -6,6 +6,7 @@ defmodule KindlingUI.Components.Button do
   import KindlingUI.Components.Icon
 
   attr :class, :string, default: nil
+  attr :container_class, :string, default: nil
   attr :icon, :string, default: nil
   attr :icon_end, :string, default: nil
   attr :type, :string, default: nil
@@ -15,7 +16,7 @@ defmodule KindlingUI.Components.Button do
 
   def button(assigns) do
     ~H"""
-    <button type={@type} class="btn-container" {@rest}>
+    <button type={@type} class={["btn-container", @container_class]} {@rest}>
       <div class={["btn flex flex-row flex-nowrap items-center", @class]}>
         <.icon :if={@icon} name={@icon} class="btn-icon" />
         <%= render_slot(@inner_block) %>
