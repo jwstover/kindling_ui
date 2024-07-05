@@ -51,6 +51,29 @@
   -webkit-filter: blur(0.5rem);
 }
 
+.card-fancy::before,
+.card-fancy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  border-radius: inherit;
+  background: conic-gradient(from var(--gradient-angle), oklch(var(--p)), oklch(var(--s)), oklch(var(--p)));
+  animation: rotate-grad 3s linear infinite;
+  transition: filter 100ms linear;
+  --webkit-transition: -webkit-filter 100ms linear;
+}
+
+.card-fancy::before {
+  inset: -0.2rem;
+  border-radius: calc(var(--rounded-box) + 0.2rem);
+}
+
+.card-fancy::after {
+  filter: blur(0.5rem);
+  -webkit-filter: blur(0.5rem);
+}
+
 @keyframes rotate-grad {
   from {
     --gradient-angle: 0deg;

@@ -18,18 +18,21 @@ defmodule KindlingUI.Components.Menu do
     """
   end
 
+  attr :href, :string, default: nil, doc: "A URL passed to the href attribute on the menu item anchor tag"
   attr :icon, :any, default: nil, doc: "A heroicon to be place at before the menu item label"
   attr :icon_class, :any, default: "", doc: "Custom classes to place on the icon element"
   attr :label, :string, default: nil, doc: "The label for the menu item"
   attr :on_click, :any, default: nil, doc: "Passed to phx-click. Handles menu item press."
 
+  slot :icon_block, default: nil
   slot :inner_block, default: nil
 
   def menu_item(assigns) do
     ~H"""
     <li>
-      <a phx-click={@on_click}>
+      <a href={@href} phx-click={@on_click}>
         <.icon :if={@icon} name={@icon} class={["h-5 w-5", @icon_class]} />
+        <%= render_slot(@icon_block) %>
         <span :if={@label}><%= @label %></span>
         <%= render_slot(@inner_block) %>
       </a>

@@ -24,7 +24,7 @@ defmodule KindlingUI.Components.Drawer do
       <div class="drawer-content">
         <%= render_slot(@inner_block) %>
       </div>
-      <aside :for={side <- @side} class={["drawer-side absolute h-full", Map.get(side, :class)]}>
+      <aside :for={side <- @side} class={["drawer-side absolute", Map.get(side, :class)]}>
         <label for={@id} aria-label="close sidebar" class="drawer-overlay"></label>
         <%= render_slot(@side) %>
       </aside>
