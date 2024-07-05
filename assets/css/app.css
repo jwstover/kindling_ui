@@ -61,6 +61,12 @@
   }
 }
 
+.text-fancy {
+  background-image: linear-gradient(oklch(var(--p)), oklch(var(--s)), oklch(var(--a)));
+  color: transparent;
+  background-clip: text;
+}
+
 .btn .btn-icon {
   @apply w-6 h-6;
 }
