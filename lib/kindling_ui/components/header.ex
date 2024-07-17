@@ -26,31 +26,34 @@ defmodule KindlingUI.Components.Header do
     """
   end
 
+  attr :class, :any, default: nil
   slot :inner_block, required: true
 
   def h1(assigns) do
     ~H"""
-    <h1 class={["text-2xl font-semibold leading-8 text-base-content"]}>
+    <h1 class={["text-2xl font-semibold leading-8 text-base-content", @class]}>
       <%= render_slot(@inner_block) %>
     </h1>
     """
   end
 
+  attr :class, :any, default: nil
   slot :inner_block, required: true
 
   def h2(assigns) do
     ~H"""
-    <h2 class={["text-xl font-semibold leading-8 text-base-content"]}>
+    <h2 class={["text-xl font-semibold leading-8 text-base-content", @class]}>
       <%= render_slot(@inner_block) %>
     </h2>
     """
   end
 
+  attr :class, :any, default: nil
   slot :inner_block, required: true
 
   def h3(assigns) do
     ~H"""
-    <h3 class={["font-semibold leading-8 text-base-content"]}>
+    <h3 class={["font-semibold leading-8 text-base-content", @class]}>
       <%= render_slot(@inner_block) %>
     </h3>
     """
