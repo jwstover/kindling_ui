@@ -9,6 +9,7 @@ defmodule KindlingUI.Components do
       import KindlingUI.Components.CodeBlock
       import KindlingUI.Components.Drawer
       import KindlingUI.Components.Flash
+      import KindlingUI.Components.Footer
       import KindlingUI.Components.Header
       import KindlingUI.Components.Icon
       import KindlingUI.Components.Input
