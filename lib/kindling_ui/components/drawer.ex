@@ -9,6 +9,7 @@ defmodule KindlingUI.Components.Drawer do
   attr :class, :string, default: nil
 
   slot :inner_block
+
   slot :side do
     attr :class, :string
   end

@@ -1,6 +1,5 @@
 defmodule KindlingUI do
-  @moduledoc """
-  """
+  @moduledoc false
 
   def live_component do
     quote do
