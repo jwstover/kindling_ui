@@ -14,6 +14,7 @@ defmodule KindlingUI.Components do
       import KindlingUI.Components.Header
       import KindlingUI.Components.Icon
       import KindlingUI.Components.Input
+      import KindlingUI.Components.Kbd
       import KindlingUI.Components.Label
       import KindlingUI.Components.List
       import KindlingUI.Components.Loading
