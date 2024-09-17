@@ -7,6 +7,7 @@ defmodule KindlingUI.Components do
       import KindlingUI.Components.Avatar
       import KindlingUI.Components.Button
       import KindlingUI.Components.CodeBlock
+      import KindlingUI.Components.Collapse
       import KindlingUI.Components.Drawer
       import KindlingUI.Components.Flash
       import KindlingUI.Components.Footer
