@@ -4,7 +4,7 @@ defmodule KindlingUI.MixProject do
   def project do
     [
       app: :kindling_ui,
-      version: "0.1.0",
+      version: "0.2.0",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       consolidate_protocols: Mix.env() != :test,
