@@ -1,0 +1,108 @@
+# base configuration pulled from:
+# https://github.com/dashbitco/broadway/blob/master/.github/workflows/ci.yml
+
+name: Build & Publish
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "*"
+
+# by default, permissions are read-only, read + write is required for git pushes
+permissions:
+  contents: write
+
+env:
+  MIX_ENV: test
+
+jobs:
+  test:
+    runs-on: "ubuntu-latest"
+
+    services:
+      postgres:
+        # replace with postgis/postgis:, use dashes instead of dots for version
+        image: postgres:15.3
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    name: Test Elixir ${{ matrix.elixir }}, OTP ${{ matrix.otp }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest"]
+        elixir: ["1.16"]
+        otp: ["26"]
+        include:
+          - elixir: "1.16"
+            otp: "26"
+            lint: lint
+    steps:
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+          elixir-version: ${{matrix.elixir}}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache deps
+        id: cache-deps
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-elixir-deps
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-${{ env.cache-name }}-
+
+      - name: Cache compiled build
+        id: cache-build
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-compiled-build
+        with:
+          path: _build
+          key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-${{ env.cache-name }}-
+            ${{ runner.os }}-mix-
+
+      - name: Clean to rule out incremental build as a source of flakiness
+        if: github.run_attempt != '1'
+        run: |
+          mix deps.clean --all
+          mix clean
+        shell: sh
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compiles without warnings
+        run: mix compile --warnings-as-errors
+
+      - name: Check Formatting
+        run: mix format --check-formatted
+        if: ${{matrix.lint}}
+
+      - name: Check for unused deps
+        run: mix deps.unlock --check-unused
+        if: ${{matrix.lint}}
+
+      - name: Check for abandonded packaged
+        run: mix hex.audit
+        if: ${{matrix.lint}}
+
+      - name: Run tests
+        run: mix test
