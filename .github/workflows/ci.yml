@@ -140,7 +140,7 @@ jobs:
 
       - name: Create Branch
         run: |
-          git branch ${{ env.PR_BRANCH }}
+          git checkout -b ${{ env.PR_BRANCH }}
 
       - name: Create Changelog
         uses: TriPSs/conventional-changelog-action@v5
