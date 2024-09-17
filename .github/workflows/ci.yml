@@ -133,6 +133,9 @@ jobs:
       clean_changelog: ${{ steps.changelog.outputs.clean_changelog }}
       version: ${{ steps.changelog.outputs.version }}
 
+    env:
+      PR_BRANCH: release-ci-${{ github.sha }}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -140,7 +143,7 @@ jobs:
 
       - name: Create Branch
         run: |
-          git checkout -b ${{ env.PR_BRANCH }}
+          git branch ${{ env.PR_BRANCH }}
 
       - name: Create Changelog
         uses: TriPSs/conventional-changelog-action@v5
