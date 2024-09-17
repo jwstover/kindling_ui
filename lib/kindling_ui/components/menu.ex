@@ -18,7 +18,10 @@ defmodule KindlingUI.Components.Menu do
     """
   end
 
-  attr :href, :string, default: nil, doc: "A URL passed to the href attribute on the menu item anchor tag"
+  attr :href, :string,
+    default: nil,
+    doc: "A URL passed to the href attribute on the menu item anchor tag"
+
   attr :icon, :any, default: nil, doc: "A heroicon to be place at before the menu item label"
   attr :icon_class, :any, default: "", doc: "Custom classes to place on the icon element"
   attr :label, :string, default: nil, doc: "The label for the menu item"
