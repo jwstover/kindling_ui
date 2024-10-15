@@ -1,3 +1,8 @@
+
+html {
+  --primary: theme('colors.blue.500');
+}
+
 .btn-container {
   position: relative;
   display: inline-block;

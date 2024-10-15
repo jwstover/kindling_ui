@@ -16,6 +16,17 @@ defmodule KindlingUI.Components.Button do
 
   def button(assigns) do
     ~H"""
+    <button
+      class={["px-4 py-2 rounded-md bg-primary font-semibold hover:bg-zinc-900 text-white", @class]}
+      {@rest}
+    >
+      <%= render_slot(@inner_block) %>
+    </button>
+    """
+  end
+
+  def button(assigns) do
+    ~H"""
     <button type={@type} class={["btn-container", @container_class]} {@rest}>
       <div class={["btn flex flex-row flex-nowrap items-center", @class]}>
         <.icon :if={@icon} name={@icon} class="btn-icon" />
