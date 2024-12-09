@@ -39,7 +39,7 @@ defmodule KindlingUI.MixProject do
     [
       {:phoenix, "~> 1.7.12"},
       {:phoenix_html, "~> 4.0"},
-      {:phoenix_live_view, "~> 0.20.2"},
+      {:phoenix_live_view, "~> 1.0.0"},
       {:gettext, "~> 0.26.1"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.2", only: [:dev, :test], runtime: false},
