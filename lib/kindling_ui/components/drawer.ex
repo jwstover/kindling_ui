@@ -23,11 +23,11 @@ defmodule KindlingUI.Components.Drawer do
     <div class={["drawer", @class]}>
       <input id={@id} type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
-        <%= render_slot(@inner_block) %>
+        {render_slot(@inner_block)}
       </div>
       <aside :for={side <- @side} class={["drawer-side absolute", Map.get(side, :class)]}>
         <label for={@id} aria-label="close sidebar" class="drawer-overlay"></label>
-        <%= render_slot(@side) %>
+        {render_slot(@side)}
       </aside>
     </div>
     """
@@ -41,7 +41,7 @@ defmodule KindlingUI.Components.Drawer do
   def drawer_trigger(assigns) do
     ~H"""
     <label for={@drawer_id} class={["btn drawer-button", @class]}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </label>
     """
   end

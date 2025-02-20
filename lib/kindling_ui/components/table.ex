@@ -41,9 +41,9 @@ defmodule KindlingUI.Components.Table do
       <thead>
         <tr>
           <th :if={@numbered}></th>
-          <th :for={col <- @col}><%= col[:label] %></th>
+          <th :for={col <- @col}>{col[:label]}</th>
           <th :if={@action != []}>
-            <span class="sr-only"><%= gettext("Actions") %></span>
+            <span class="sr-only">{gettext("Actions")}</span>
           </th>
         </tr>
       </thead>
@@ -53,19 +53,19 @@ defmodule KindlingUI.Components.Table do
           id={@row_id && @row_id.(row)}
           class={["hover", @row_click && "cursor-pointer"]}
         >
-          <th :if={@numbered}><%= n + 1 %></th>
+          <th :if={@numbered}>{n + 1}</th>
           <%= for {col, i} <- Enum.with_index(@col) do %>
             <th :if={i == 0 && !@numbered} phx-click={@row_click && @row_click.(row)}>
-              <%= render_slot(col, @row_item.(row)) %>
+              {render_slot(col, @row_item.(row))}
             </th>
             <td :if={i != 0 || @numbered} phx-click={@row_click && @row_click.(row)}>
-              <%= render_slot(col, @row_item.(row)) %>
+              {render_slot(col, @row_item.(row))}
             </td>
           <% end %>
           <td :if={@action != []}>
             <div class="flex flex-row flex-nowrap justify-center items-center gap-2">
               <span :for={action <- @action}>
-                <%= render_slot(action, @row_item.(row)) %>
+                {render_slot(action, @row_item.(row))}
               </span>
             </div>
           </td>

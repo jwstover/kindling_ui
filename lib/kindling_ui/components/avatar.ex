@@ -29,7 +29,7 @@ defmodule KindlingUI.Components.Avatar do
         <img src={@src} />
       </div>
       <div :if={@placeholder} class={["bg-neutral text-neutral-content", @avatar_size, @class]}>
-        <span class={[@text_size]}><%= @placeholder %></span>
+        <span class={[@text_size]}>{@placeholder}</span>
       </div>
     </div>
     """

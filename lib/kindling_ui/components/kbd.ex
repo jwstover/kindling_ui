@@ -8,7 +8,7 @@ defmodule KindlingUI.Components.Kbd do
 
   def kbd(assigns) do
     ~H"""
-    <kbd class={["kbd", @class]}><%= render_slot(@inner_block) %></kbd>
+    <kbd class={["kbd", @class]}>{render_slot(@inner_block)}</kbd>
     """
   end
 end

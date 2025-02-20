@@ -13,7 +13,7 @@ defmodule KindlingUI.Components.Menu do
   def menu(assigns) do
     ~H"""
     <ul class={["menu", @class, @horizontal && "menu-horizontal"]}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </ul>
     """
   end
@@ -35,9 +35,9 @@ defmodule KindlingUI.Components.Menu do
     <li>
       <a href={@href} phx-click={@on_click}>
         <.icon :if={@icon} name={@icon} class={["h-5 w-5", @icon_class]} />
-        <%= render_slot(@icon_block) %>
-        <span :if={@label}><%= @label %></span>
-        <%= render_slot(@inner_block) %>
+        {render_slot(@icon_block)}
+        <span :if={@label}>{@label}</span>
+        {render_slot(@inner_block)}
       </a>
     </li>
     """
@@ -57,11 +57,11 @@ defmodule KindlingUI.Components.Menu do
       <details open={@open}>
         <summary>
           <.icon :if={@icon} name={@icon} class={["h-5 w-5", @icon_class]} />
-          <span :if={@label}><%= @label %></span>
-          <%= render_slot(@label_block) %>
+          <span :if={@label}>{@label}</span>
+          {render_slot(@label_block)}
         </summary>
         <ul>
-          <%= render_slot(@inner_block) %>
+          {render_slot(@inner_block)}
         </ul>
       </details>
     </li>

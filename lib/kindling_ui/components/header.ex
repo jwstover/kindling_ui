@@ -16,12 +16,12 @@ defmodule KindlingUI.Components.Header do
     ~H"""
     <header class={[@actions != [] && "flex items-center justify-between gap-6", @class]}>
       <div>
-        <.h1><%= render_slot(@inner_block) %></.h1>
+        <.h1>{render_slot(@inner_block)}</.h1>
         <p :if={@subtitle != []} class="mt-2 text-sm leading-6 text-base-content/80">
-          <%= render_slot(@subtitle) %>
+          {render_slot(@subtitle)}
         </p>
       </div>
-      <div class="flex-none"><%= render_slot(@actions) %></div>
+      <div class="flex-none">{render_slot(@actions)}</div>
     </header>
     """
   end
@@ -32,7 +32,7 @@ defmodule KindlingUI.Components.Header do
   def h1(assigns) do
     ~H"""
     <h1 class={["text-2xl font-semibold leading-8 text-base-content", @class]}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </h1>
     """
   end
@@ -43,7 +43,7 @@ defmodule KindlingUI.Components.Header do
   def h2(assigns) do
     ~H"""
     <h2 class={["text-xl font-semibold leading-8 text-base-content", @class]}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </h2>
     """
   end
@@ -54,7 +54,7 @@ defmodule KindlingUI.Components.Header do
   def h3(assigns) do
     ~H"""
     <h3 class={["font-semibold leading-8 text-base-content", @class]}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </h3>
     """
   end

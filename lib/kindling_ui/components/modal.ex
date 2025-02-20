@@ -56,7 +56,7 @@ defmodule KindlingUI.Components.Modal do
             <.icon name="hero-x-mark" />
           </.button>
         </div>
-        <%= render_slot(@inner_block) %>
+        {render_slot(@inner_block)}
       </.focus_wrap>
     </dialog>
     """
