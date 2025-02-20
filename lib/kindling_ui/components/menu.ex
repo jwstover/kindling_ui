@@ -27,8 +27,8 @@ defmodule KindlingUI.Components.Menu do
   attr :label, :string, default: nil, doc: "The label for the menu item"
   attr :on_click, :any, default: nil, doc: "Passed to phx-click. Handles menu item press."
 
-  slot :icon_block, default: nil
-  slot :inner_block, default: nil
+  slot :icon_block, required: false
+  slot :inner_block, required: false
 
   def menu_item(assigns) do
     ~H"""
@@ -48,8 +48,8 @@ defmodule KindlingUI.Components.Menu do
   attr :label, :string, default: nil
   attr :open, :boolean, default: false
 
-  slot :label_block, default: nil
-  slot :inner_block, default: nil
+  slot :label_block, required: false
+  slot :inner_block, required: false
 
   def submenu(assigns) do
     ~H"""
