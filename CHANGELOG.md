@@ -1,4 +1,4 @@
-# [0.5.0](https://github.com/jwstover/kindling_ui/compare/v0.2.0...v0.5.0) (2024-09-30)
+# [0.6.0](https://github.com/jwstover/kindling_ui/compare/v0.2.0...v0.6.0) (2025-02-20)
 
 
 ### Features
