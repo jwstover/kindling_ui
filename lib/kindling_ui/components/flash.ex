@@ -41,8 +41,8 @@ defmodule KindlingUI.Components.Flash do
         <.icon :if={@kind == :info} name="hero-information-circle-mini text-success" class="h-6 w-6" />
         <.icon :if={@kind == :error} name="hero-exclamation-circle-mini text-error" class="h-6 w-6" />
         <div class="flex-1 flex flex-col items-start">
-          <h3 :if={@title} class="font-bold"><%= @title %></h3>
-          <div class="text-xs"><%= msg %></div>
+          <h3 :if={@title} class="font-bold">{@title}</h3>
+          <div class="text-xs">{msg}</div>
         </div>
         <.button class="btn-sm btn-square" aria-label="close">
           <.icon name="hero-x-mark" />
@@ -75,7 +75,7 @@ defmodule KindlingUI.Components.Flash do
         phx-connected={hide("#client-error")}
         hidden
       >
-        <%= gettext("Attempting to reconnect") %>
+        {gettext("Attempting to reconnect")}
         <.icon name="hero-arrow-path" class="ml-1 h-3 w-3 animate-spin" />
       </.flash>
 
@@ -87,7 +87,7 @@ defmodule KindlingUI.Components.Flash do
         phx-connected={hide("#server-error")}
         hidden
       >
-        <%= gettext("Hang in there while we get back on track") %>
+        {gettext("Hang in there while we get back on track")}
         <.icon name="hero-arrow-path" class="ml-1 h-3 w-3 animate-spin" />
       </.flash>
     </div>

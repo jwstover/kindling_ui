@@ -19,7 +19,7 @@ defmodule KindlingUI.Components.Button do
     <button type={@type} class={["btn-container", @container_class]} {@rest}>
       <div class={["btn flex flex-row flex-nowrap items-center", @class]}>
         <.icon :if={@icon} name={@icon} class="btn-icon" />
-        <%= render_slot(@inner_block) %>
+        {render_slot(@inner_block)}
         <.icon :if={@icon_end} name={@icon_end} class="btn-icon" />
       </div>
     </button>
@@ -42,7 +42,7 @@ defmodule KindlingUI.Components.Button do
     ~H"""
     <.link navigate={@navigate} class={["btn", @class]}>
       <.icon name="hero-arrow-left-solid" class="h-3 w-3" />
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </.link>
     """
   end

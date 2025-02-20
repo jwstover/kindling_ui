@@ -14,7 +14,7 @@ defmodule KindlingUI.Components.Label do
   def label(assigns) do
     ~H"""
     <label for={@for} class="label">
-      <span class="label-text"><%= render_slot(@inner_block) %></span>
+      <span class="label-text">{render_slot(@inner_block)}</span>
     </label>
     """
   end

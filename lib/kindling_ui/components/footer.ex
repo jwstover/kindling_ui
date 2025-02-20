@@ -11,10 +11,10 @@ defmodule KindlingUI.Components.Footer do
     ~H"""
     <footer class={["footer", @class]}>
       <aside :for={aside <- @aside}>
-        <%= render_slot(aside) %>
+        {render_slot(aside)}
       </aside>
 
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </footer>
     """
   end
@@ -29,9 +29,9 @@ defmodule KindlingUI.Components.Footer do
   def nav(assigns) do
     ~H"""
     <nav>
-      <h6 :if={@title} class="footer-title"><%= @title %></h6>
+      <h6 :if={@title} class="footer-title">{@title}</h6>
       <a :for={nav_item <- @nav_item} class="link link-hover" phx-click={Map.get(nav_item, :on_click)}>
-        <%= Map.get(nav_item, :title) %>
+        {Map.get(nav_item, :title)}
       </a>
     </nav>
     """

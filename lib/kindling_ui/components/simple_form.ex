@@ -31,9 +31,9 @@ defmodule KindlingUI.Components.SimpleForm do
     ~H"""
     <.form :let={f} for={@for} as={@as} {@rest}>
       <div class={["space-y-4", @class]}>
-        <%= render_slot(@inner_block, f) %>
+        {render_slot(@inner_block, f)}
         <div :for={action <- @actions} class="mt-2 flex items-center justify-between gap-6">
-          <%= render_slot(action, f) %>
+          {render_slot(action, f)}
         </div>
       </div>
     </.form>

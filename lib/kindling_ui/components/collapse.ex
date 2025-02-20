@@ -16,10 +16,10 @@ defmodule KindlingUI.Components.Collapse do
     ~H"""
     <details class={["collapse", @class]}>
       <summary class={["collapse-title text-xl font-medium", @title_class]}>
-        <%= @title %>
+        {@title}
       </summary>
       <div class="collapse-content">
-        <%= render_slot(@inner_block) %>
+        {render_slot(@inner_block)}
       </div>
     </details>
     """
